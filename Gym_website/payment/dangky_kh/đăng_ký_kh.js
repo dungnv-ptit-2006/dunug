@@ -1,20 +1,21 @@
+// Biến lưu thông tin gói tập được chọn
 let selectedPlan = null;
 let selectedPrice = 0;
 let selectedPlanName = "";
 
-// Chọn gói tập
+// Hàm chọn gói tập
 function selectPlan(planType, price, planName) {
-  // Reset tất cả buttons
+  // Reset tất cả các nút chọn gói
   document.querySelectorAll(".select-plan-btn").forEach((btn) => {
     btn.classList.remove("selected");
     btn.innerHTML = '<i class="bx bx-check-circle"></i> Chọn Gói Này';
   });
 
-  // Highlight button được chọn
+  // Đánh dấu gói được chọn
   event.target.classList.add("selected");
   event.target.innerHTML = '<i class="bx bx-check-circle"></i> Đã Chọn';
 
-  // Cập nhật thông tin
+  // Cập nhật thông tin gói
   selectedPlan = planType;
   selectedPrice = price;
   selectedPlanName = planName;
@@ -24,96 +25,86 @@ function selectPlan(planType, price, planName) {
   document.getElementById("selectedPlanName").textContent = planName;
   document.getElementById("totalPrice").textContent = `$${price}`;
 
-  // Kiểm tra form
+  // Kiểm tra trạng thái form
   checkFormValidity();
 }
 
-// Kiểm tra tính hợp lệ của form
+// Hàm kiểm tra tính hợp lệ của form
 function checkFormValidity() {
-  const form = document.getElementById("registrationForm");
-  const requiredFields = form.querySelectorAll("[required]");
+  const requiredFields = document.querySelectorAll("[required]");
   let isValid = selectedPlan !== null;
 
+  // Kiểm tra các trường bắt buộc
   requiredFields.forEach((field) => {
     if (!field.value.trim()) {
       isValid = false;
     }
   });
 
-  // Kiểm tra email hợp lệ
+  // Kiểm tra định dạng email
   const email = document.getElementById("email").value;
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     isValid = false;
   }
 
-  // Kiểm tra số điện thoại hợp lệ (ít nhất 10 số)
+  // Kiểm tra số điện thoại (ít nhất 10 số)
   const phone = document.getElementById("phone").value;
-  if (!/^\+?[0-9\s]{10,15}$/.test(phone)) {
+  if (!/^\d{10,15}$/.test(phone)) {
     isValid = false;
   }
 
+  // Cập nhật trạng thái nút thanh toán
   document.getElementById("proceedBtn").disabled = !isValid;
 }
 
-// Validate từng trường khi nhập
-function validateField(fieldId, errorId, validationFn = null) {
+// Hàm validate từng trường input
+function setupFieldValidation(fieldId, errorId, validationFn = null) {
   const field = document.getElementById(fieldId);
   const error = document.getElementById(errorId);
 
-  if (!field.value.trim()) {
-    field.classList.add("error");
-    error.style.display = "block";
-    return false;
-  }
+  field.addEventListener("input", () => {
+    const value = field.value.trim();
 
-  if (validationFn && !validationFn(field.value)) {
-    field.classList.add("error");
-    error.style.display = "block";
-    return false;
-  }
+    if (!value) {
+      field.classList.add("error");
+      error.style.display = "block";
+    } else if (validationFn && !validationFn(value)) {
+      field.classList.add("error");
+      error.style.display = "block";
+    } else {
+      field.classList.remove("error");
+      error.style.display = "none";
+    }
 
-  field.classList.remove("error");
-  error.style.display = "none";
-  return true;
+    checkFormValidity();
+  });
 }
 
-// Xử lý sự kiện input
-document.getElementById("firstName").addEventListener("input", () => {
-  validateField("firstName", "firstNameError");
-  checkFormValidity();
-});
+// Thiết lập validation cho các trường
+setupFieldValidation("firstName", "firstNameError");
+setupFieldValidation("lastName", "lastNameError");
+setupFieldValidation("email", "emailError", (value) =>
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+);
+setupFieldValidation("phone", "phoneError", (value) =>
+  /^\d{10,15}$/.test(value)
+);
+setupFieldValidation("age", "ageError", (value) => value >= 16 && value <= 50);
+setupFieldValidation("address", "addressError");
 
-document.getElementById("lastName").addEventListener("input", () => {
-  validateField("lastName", "lastNameError");
-  checkFormValidity();
-});
-
-document.getElementById("email").addEventListener("input", () => {
-  validateField("email", "emailError", (value) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-  );
-  checkFormValidity();
-});
-
-document.getElementById("phone").addEventListener("input", () => {
-  validateField("phone", "phoneError", (value) =>
-    /^\+?[0-9\s]{10,15}$/.test(value)
-  );
-  checkFormValidity();
-});
-
-document.getElementById("age").addEventListener("input", () => {
-  validateField("age", "ageError", (value) => value >= 16 && value <= 50);
-  checkFormValidity();
-});
-
+// Xử lý trường gender riêng vì là select
 document.getElementById("gender").addEventListener("change", () => {
-  validateField("gender", "genderError");
-  checkFormValidity();
-});
+  const field = document.getElementById("gender");
+  const error = document.getElementById("genderError");
 
-document.getElementById("address").addEventListener("input", () => {
-  validateField("address", "addressError");
+  if (!field.value) {
+    field.classList.add("error");
+    error.style.display = "block";
+  } else {
+    field.classList.remove("error");
+    error.style.display = "none";
+  }
+
   checkFormValidity();
 });
 
@@ -123,38 +114,9 @@ document
   .addEventListener("submit", function (e) {
     e.preventDefault();
 
-    // Validate tất cả các trường
-    const isFirstNameValid = validateField("firstName", "firstNameError");
-    const isLastNameValid = validateField("lastName", "lastNameError");
-    const isEmailValid = validateField("email", "emailError", (value) =>
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-    );
-    const isPhoneValid = validateField("phone", "phoneError", (value) =>
-      /^\+?[0-9\s]{10,15}$/.test(value)
-    );
-    const isAgeValid = validateField(
-      "age",
-      "ageError",
-      (value) => value >= 16 && value <= 50
-    );
-    const isGenderValid = validateField("gender", "genderError");
-    const isAddressValid = validateField("address", "addressError");
-
-    const isFormValid =
-      isFirstNameValid &&
-      isLastNameValid &&
-      isEmailValid &&
-      isPhoneValid &&
-      isAgeValid &&
-      isGenderValid &&
-      isAddressValid;
-
-    if (!isFormValid) {
-      return;
-    }
-
-    if (!selectedPlan) {
-      alert("Vui lòng chọn gói tập trước khi thanh toán");
+    // Kiểm tra lần cuối trước khi submit
+    checkFormValidity();
+    if (document.getElementById("proceedBtn").disabled) {
       return;
     }
 
@@ -180,5 +142,5 @@ document
     );
 
     // Chuyển đến trang thanh toán
-    window.location.href = "../payment/thanhtoan.html";
+    window.location.href = "../thanhtoan/thanhtoan.html";
   });

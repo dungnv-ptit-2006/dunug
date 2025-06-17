@@ -26,11 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
           e.preventDefault();
           localStorage.removeItem("isLoggedIn");
           localStorage.removeItem("currentUser");
-          window.location.href = "../Gym_website/đăng_nhập/login.html";
+          window.location.href = "../dang_nhap/login/login.html";
         };
       } else {
         loginButton.textContent = "Đăng Nhập";
-        loginButton.href = "../Gym_website/đăng_nhập/login.html";
+        loginButton.href = "../dang_nhap/login/login.html";
         loginButton.onclick = null;
       }
     }
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalOriginalItems = items.length;
     const totalDots = 6; // Tổng số dots mong muốn
     let autoSlideInterval;
-    const autoSlideDelay = 2000; // 3 giây tự động chuyển slide
+    const autoSlideDelay = 3000; // 3 giây tự động chuyển slide
 
     // Tạo 6 dots
     function createDots() {

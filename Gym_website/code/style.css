@@ -1,52 +1,58 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  list-style: none;
-  border: none;
-  outline: none;
-  scroll-behavior: smooth;
-  font-family: -apple-system, sans-serif;
+  box-sizing: border-box; /* Kích thước bao gồm border và padding */
+  text-decoration: none; /* Không gạch chân cho liên kết */
+  list-style: none; /* Không dấu đầu dòng cho danh sách */
+  border: none; /* Không viền mặc định */
+  outline: none; /* Không viền khi focus */
+  scroll-behavior: smooth; /* Cuộn mượt */
+  font-family: -apple-system, sans-serif; /* Font chữ hệ thống */
 }
 
+/* Biến CSS để dễ quản lý theme */
 :root {
-  --background: #000;
-  --snd-bg-color: #111;
-  --text-color: #fff;
-  --main-color: #5dade2;
+  --background: #000; /* Màu nền chính */
+  --snd-bg-color: #111; /* Màu nền phụ */
+  --text-color: #fff; /* Màu chữ */
+  --main-color: #5dade2; /* Màu chủ đạo */
 }
 
+/* Thiết lập cơ bản cho HTML */
 html {
-  font-size: 60%;
-  overflow-x: hidden;
+  font-size: 60%; /* Sử dụng đơn vị rem để responsive */
+  overflow-x: hidden; /* Ngăn chặn cuộn ngang */
 }
 
+/* Thiết lập body với theme tối */
 body {
   background-color: var(--background);
   color: var(--text-color);
 }
 
+/* Thiết lập chung cho các section */
 section {
-  min-height: 100vh;
-  padding: 10rem 8% 2rem;
+  min-height: 100vh; /* Mỗi section chiếm ít nhất full màn hình */
+  padding: 10rem 8% 2rem; /* Padding phía trên để tránh header cố định */
 }
 
+/* Header cố định */
 header {
   font-weight: bolder;
   position: fixed;
   width: 100%;
   top: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 1000; /* Đảm bảo header luôn trên cùng */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2rem 9%;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.5); /* Nền trong suốt */
+  backdrop-filter: blur(10px); /* Hiệu ứng mờ */
 }
 
+/* Logo */
 .logo {
   font-size: 3rem;
   color: var(--text-color);
@@ -56,13 +62,15 @@ header {
 }
 
 .logo:hover {
-  transform: scale(1.1);
+  transform: scale(1.1); /* Hiệu ứng phóng to khi hover */
 }
 
+/* Màu nhấn cho các span */
 span {
   color: var(--main-color);
 }
 
+/* Thanh điều hướng */
 .navbar {
   display: flex;
   transition: all 0.5s ease;
@@ -81,9 +89,13 @@ span {
   color: rgb(164, 89, 124);
   border-bottom: 1.9px solid var(--main-color);
 }
+
+/* Container nút phía trên */
 .top-btn {
   display: flex;
 }
+
+/* Nút điều hướng */
 .nav-btn {
   padding: 1.2rem 0.8rem;
   background: transparent;
@@ -102,31 +114,19 @@ span {
   box-shadow: 0 0 10px var(--main-color);
 }
 
+/* Icon menu mobile */
 #menu-icon {
   color: var(--main-color);
   font-size: 3.4rem;
   cursor: pointer;
 }
 
-/* Mobile view: Show the menu icon */
-@media (max-width: 768px) {
-  .menu-icon {
-    display: block;
-  }
-
-  .navbar {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .navbar.active {
-    display: flex;
-  }
-}
-*/ .home {
+/* Section trang chủ */
+.home {
   display: flex;
-  justify-content: center;
-  align-items: center;
+}
+.home-content {
+  margin-top: 150px;
 }
 
 .home-content h3 {
@@ -144,12 +144,17 @@ span {
   font-size: 4rem;
   font-weight: bold;
 }
-
+.home-content p {
+  font-size: 1.9rem;
+  margin-top: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+}
 .home-img img {
-  width: 45vw;
-  margin-left: 34%;
+  width: 600px;
+  margin-right: -150px;
 }
 
+/* Hiệu ứng watermark phía sau ảnh trang chủ */
 .home-img::before {
   content: "MT FITNESS";
   position: absolute;
@@ -165,12 +170,13 @@ span {
 }
 
 .home-content p {
-  font-size: 2.3rem;
+  font-size: 1.9rem;
   font-style: italic;
   margin-bottom: 2rem;
   margin-top: 2rem;
 }
 
+/* Nút chính */
 .btn {
   display: inline-block;
   padding: 1rem 2.8rem;
@@ -186,8 +192,8 @@ span {
 .btn:hover {
   color: var(--text-color);
 }
-/* Replace the current services CSS with this */
 
+/* Section dịch vụ */
 .services {
   background: var(--snd-bg-color);
   padding: 8rem 8% 6rem;
@@ -208,6 +214,7 @@ span {
   font-weight: 300;
 }
 
+/* Lưới hiển thị các dịch vụ */
 .services-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -215,6 +222,7 @@ span {
   margin-top: 4rem;
 }
 
+/* Card dịch vụ cá nhân */
 .service-card {
   position: relative;
   border-radius: 20px;
@@ -240,6 +248,7 @@ span {
   transform: scale(1.1);
 }
 
+/* Icon dịch vụ */
 .service-icon {
   position: absolute;
   top: 20px;
@@ -268,6 +277,7 @@ span {
   color: #000;
 }
 
+/* Hiệu ứng overlay cho card dịch vụ */
 .service-overlay {
   position: absolute;
   bottom: 0;
@@ -299,6 +309,7 @@ span {
   line-height: 1.5;
 }
 
+/* Nút dịch vụ */
 .service-btn {
   display: inline-block;
   padding: 0.8rem 2rem;
@@ -315,9 +326,7 @@ span {
   box-shadow: 0 0 15px var(--main-color);
 }
 
-/* ------------------------------------------about------------------ */
-
-/* Replace the current About CSS with this */
+/* Section giới thiệu */
 .about {
   background: var(--background);
   padding: 8rem 8% 6rem;
@@ -352,6 +361,7 @@ span {
   font-weight: 300;
 }
 
+/* Bố cục nội dung giới thiệu */
 .about-content {
   display: flex;
   flex-wrap: wrap;
@@ -361,6 +371,7 @@ span {
   margin-bottom: 6rem;
 }
 
+/* Lưới tính năng */
 .about-features {
   flex: 0.7;
   min-width: 300px;
@@ -369,6 +380,7 @@ span {
   gap: 3rem;
 }
 
+/* Card tính năng cá nhân */
 .feature-card {
   background: var(--snd-bg-color);
   padding: 3rem 2rem;
@@ -384,6 +396,7 @@ span {
   border: 1px solid var(--main-color);
 }
 
+/* Icon tính năng */
 .feature-icon {
   width: 70px;
   height: 70px;
@@ -416,6 +429,7 @@ span {
   line-height: 1.6;
 }
 
+/* Ảnh giới thiệu */
 .about-image {
   flex: 1;
   min-width: 300px;
@@ -435,6 +449,7 @@ span {
   transform: scale(1.05);
 }
 
+/* Section thống kê */
 .about-stats {
   display: flex;
   justify-content: space-around;
@@ -469,8 +484,7 @@ span {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* ------------------------------------------plans ------------------*/
-
+/* Section gói dịch vụ/giá cả */
 .plans {
   background: var(--snd-bg-color);
   font-size: 25px;
@@ -488,6 +502,7 @@ span {
   margin-top: 4.2rem;
 }
 
+/* Box giá cả */
 .box {
   padding: 30px;
   height: 40rem;
@@ -545,9 +560,10 @@ span {
   border: 1px solid var(--main-color);
   transform: translateY(-5px) scale(1.03);
 }
-/* ------------------------------------------reviews ------------------*/
+
+/* Section đánh giá/khách hàng */
 .testimonials {
-  background: linear-gradient(135deg, #0f0f15 0%, #1a1a2e 100%);
+  background: #1a1a2e;
   padding: 8rem 5%;
   position: relative;
   overflow: hidden;
@@ -588,6 +604,7 @@ span {
   position: relative;
 }
 
+/* Hiệu ứng gạch chân cho span */
 .testimonials-header h2 span::after {
   content: "";
   position: absolute;
@@ -605,6 +622,7 @@ span {
   margin-bottom: 2rem;
 }
 
+/* Đường phân cách */
 .divider {
   width: 80px;
   height: 4px;
@@ -613,6 +631,7 @@ span {
   border-radius: 2px;
 }
 
+/* Lưới đánh giá */
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -620,6 +639,7 @@ span {
   margin-bottom: 5rem;
 }
 
+/* Card đánh giá */
 .testimonial-card {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
@@ -628,7 +648,7 @@ span {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(93, 173, 226, 0.1);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s ease;
   z-index: 1;
 }
 
@@ -638,17 +658,14 @@ span {
   border: 1px solid rgba(93, 173, 226, 0.3);
 }
 
+/* Hiệu ứng nền card */
 .card-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(93, 173, 226, 0.1) 0%,
-    rgba(93, 173, 226, 0) 100%
-  );
+  background: rgba(93, 173, 226, 0);
   z-index: -1;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -658,12 +675,14 @@ span {
   opacity: 1;
 }
 
+/* Header card */
 .card-header {
   display: flex;
   align-items: center;
   margin-bottom: 2rem;
 }
 
+/* --------------Avatar---------------- */
 .avatar {
   width: 60px;
   height: 60px;
@@ -685,6 +704,7 @@ span {
   margin-bottom: 0.5rem;
 }
 
+/* Đánh giá sao */
 .stars {
   display: flex;
 }
@@ -703,15 +723,6 @@ span {
   position: relative;
 }
 
-.star.half::before {
-  content: "★";
-  position: absolute;
-  left: 0;
-  width: 50%;
-  overflow: hidden;
-  color: gold;
-}
-
 .card-body p {
   font-size: 1.6rem;
   line-height: 1.7;
@@ -721,6 +732,7 @@ span {
   position: relative;
   padding-left: 2rem;
 }
+
 .card-footer {
   font-size: 1.4rem;
   color: rgba(255, 255, 255, 0.6);
@@ -728,7 +740,7 @@ span {
   padding-top: 1.5rem;
 }
 
-/* Stats Container */
+/* Container thống kê */
 .stats-container {
   display: flex;
   justify-content: center;
@@ -769,30 +781,7 @@ span {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .testimonials-header h2 {
-    font-size: 2.8rem;
-  }
-
-  .testimonials-header p {
-    font-size: 1.6rem;
-  }
-
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .stat-box {
-    padding: 1.5rem 2rem;
-    min-width: 120px;
-  }
-
-  .stat-value {
-    font-size: 2.8rem;
-  }
-}
-/* ------------------------------------blog----------------------- */
+/* Section blog */
 .blog {
   background: var(--snd-bg-color);
   padding: 5rem 0;
@@ -810,6 +799,7 @@ span {
   position: relative;
 }
 
+/*------ Thanh trượt blog----- */
 .blog-slider {
   display: flex;
   transition: transform 0.5s ease;
@@ -834,6 +824,7 @@ span {
   color: var(--text-color);
 }
 
+/* Dots điều hướng carousel */
 .carousel-dots {
   display: flex;
   justify-content: center;
@@ -841,8 +832,8 @@ span {
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #555;
   margin: 0 5px;
@@ -854,7 +845,7 @@ span {
   background: var(--main-color);
 }
 
-/* Hiệu ứng phóng to ảnh */
+/* Hiệu ứng hover cho ảnh blog */
 .blog-item img {
   width: 100%;
   margin-bottom: 1.5rem;
@@ -869,36 +860,14 @@ span {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Dot navigation */
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  gap: 10px;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #555;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.dot.active {
-  background: var(--main-color);
-  transform: scale(1);
-}
-
-/* ------------------footer-------------------------- */
-
+/* ---------------------Footer-------------------- */
 .footer {
   position: relative;
   bottom: 0;
   width: 100%;
   background-color: var(--snd-bg-color);
 }
+
 .footer-content {
   display: flex;
   justify-content: space-between;
@@ -908,50 +877,62 @@ span {
   font-size: 1.6rem;
   margin-bottom: 30px;
 }
+
 .muctieu {
   margin-bottom: 190px;
 }
+
 .muctieu a {
   margin-bottom: 10px;
 }
+
 .muctieu p {
   font-size: 1.6rem;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 500;
   line-height: 1.5;
 }
+
 .links {
   margin-bottom: 75px;
 }
+
 .links h3 {
   font-size: 2.5rem;
   margin-bottom: 10px;
   color: var(--main-color);
 }
+
 .links ul li {
   font-size: 1.9rem;
   margin-bottom: 10px;
 }
+
 .links ul li a {
   color: whitesmoke;
 }
+
 .contact {
   margin-bottom: 150px;
 }
+
 .contact h3 {
   font-size: 2.5rem;
   margin-bottom: 10px;
   color: var(--main-color);
 }
+
 .contact p {
   font-size: 1.6rem;
   margin-bottom: 10px;
 }
+
 .contact i {
   color: var(--main-color);
   margin-right: 10px;
 }
 
+/* Phần Instagram trong footer */
 .instagram img {
   width: 100px;
   height: 100px;
@@ -959,12 +940,14 @@ span {
   margin-bottom: 10px;
   margin-top: 3px;
 }
+
 .instagram h3 {
   font-size: 2.5rem;
   margin-bottom: 10px;
   color: var(--main-color);
 }
 
+/* Liên kết mạng xã hội */
 .footer .social {
   text-align: center;
   padding-bottom: 10px;
@@ -1002,7 +985,7 @@ span {
   color: var(--text-color);
 }
 
-/* ------------------mũi tên góc màn hình-------------------------- */
+/* Nút mũi tên trở lại đầu trang */
 .fixed-arrow {
   position: fixed;
   bottom: 50px;
@@ -1022,11 +1005,13 @@ span {
   transition: all 0.3s ease;
   z-index: 1000;
 }
+
 .fixed-arrow:hover {
   background-color: var(--main-color);
   color: black;
   box-shadow: 0 0 15px var(--main-color);
 }
+
 .fixed-arrow.show {
   opacity: 1;
   visibility: visible;

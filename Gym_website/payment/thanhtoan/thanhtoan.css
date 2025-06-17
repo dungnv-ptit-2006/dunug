@@ -49,6 +49,7 @@ header {
   background: rgba(0, 0, 0, 0.95);
   border-bottom: 1px solid rgba(93, 173, 226, 0.2);
 }
+/* ----------------------logo--------------------- */
 
 .logo {
   font-size: 2.5rem;
@@ -83,7 +84,7 @@ header {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(93, 173, 226, 0.5);
 }
-
+/* ---------------------------------container---------------------------------- */
 .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -494,11 +495,8 @@ header {
 .floating-circle {
   position: absolute;
   border-radius: 50%;
-  background: linear-gradient(
-    45deg,
-    rgba(93, 173, 226, 0.1),
-    rgba(116, 192, 252, 0.1)
-  );
+  background: rgba(93, 173, 226, 0.1);
+
   animation: float 6s ease-in-out infinite;
 }
 

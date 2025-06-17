@@ -1,4 +1,4 @@
-// Password strength indicator
+// Chỉ báo độ mạnh của mật khẩu
 const passwordInput = document.getElementById("regPassword");
 const strengthBar = document.getElementById("passwordStrengthBar");
 const strengthText = document.getElementById("passwordStrengthText");
@@ -7,16 +7,16 @@ passwordInput.addEventListener("input", function () {
   const password = this.value;
   let strength = 0;
 
-  // Length check
+  //Kiểm tra độ dài
   if (password.length >= 8) strength += 1;
   if (password.length >= 12) strength += 1;
 
-  // Character type checks
+  // Kiểm tra loại ký tự
   if (/[A-Z]/.test(password)) strength += 1;
   if (/[0-9]/.test(password)) strength += 1;
   if (/[^A-Za-z0-9]/.test(password)) strength += 1;
 
-  // Update strength bar and text
+  // Cập nhật thanh và văn bản độ mạnh
   const width = (strength / 5) * 100;
   strengthBar.style.width = width + "%";
 
@@ -45,11 +45,11 @@ document
     const confirmPassword = document.getElementById("regConfirmPassword").value;
     const email = document.getElementById("regEmail").value;
 
-    // Reset messages
+    // Xóa thông báo lỗi và thành công trước khi kiểm tra
     document.getElementById("errorMessage").textContent = "";
     document.getElementById("successMessage").textContent = "";
 
-    // Validate inputs
+    // Kiểm tra các trường bắt buộc
     if (password !== confirmPassword) {
       document.getElementById("errorMessage").textContent =
         "Passwords do not match!";
