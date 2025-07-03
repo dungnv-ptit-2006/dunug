@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MT Fitness - Login</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../login/login.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="logo">
+        <h2>MT <span>FITNESS</span></h2>
+      </div>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <i class="bx bx-user"></i>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            required
+            placeholder="Enter your username"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <i class="bx bx-lock-alt"></i>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            placeholder="Enter your password"
+          />
+        </div>
+        <div id="errorMessage" class="error"></div>
+        <button type="submit" class="btn">Login</button>
+
+        <div class="divider"><span>OR</span></div>
+
+        <button type="button" id="registerBtn" class="btn register-btn">
+          <a href="../register/register.html">Create Account</a>
+        </button>
+        <button type="button" id="backBtn" class="btn back-btn">
+          <a href="../../code/mt_fitness.html">Back to Home</a>
+        </button>
+
+        <div class="forgot-password">
+          <a href="#">Forgot Password?</a>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      // Kiểm tra nếu đã đăng nhập thì chuyển hướng sang admin
+      // if (localStorage.getItem("isLoggedIn") === "true") {
+      //   window.location.href = "../mt_fitness.html";
+      // }
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+
+          // Lấy danh sách user từ localStorage
+          const users = JSON.parse(localStorage.getItem("users")) || [];
+
+          // Kiểm tra thông tin đăng nhập
+          const user = users.find(
+            (u) => u.username === username && u.password === password
+          );
+
+          if (user) {
+            // Lưu trạng thái đăng nhập và thông tin user
+            localStorage.setItem("isLoggedIn", "true");
+            localStorage.setItem("currentUser", JSON.stringify(user));
+            // Chuyển hướng sang trang admin
+            window.location.href = "../../code/mt_fitness.html";
+          } else {
+            document.getElementById("errorMessage").textContent =
+              "Invalid username or password. Please try again.";
+          }
+        });
+
+      // Xử lý nút đăng ký
+      document
+        .getElementById("registerBtn")
+        .addEventListener("click", function () {
+          window.location.href = "../đăng_nhập/register.html";
+        });
+    </script>
+  </body>
+</html>

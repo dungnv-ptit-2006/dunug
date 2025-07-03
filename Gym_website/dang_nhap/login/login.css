@@ -1,0 +1,204 @@
+:root {
+  --main-color: #5dade2;
+  --dark-color: #111;
+  --light-color: #f4f4f4;
+  --accent-color: #ff6b6b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: url("../../assets/phongdangnhap.avif") no-repeat center center
+    fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.427);
+  z-index: 1;
+}
+
+.login-container {
+  position: relative;
+  z-index: 2;
+  background: rgba(17, 17, 17, 0.466);
+  padding: 40px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--main-color);
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  transition: all 0.5s ease;
+}
+
+.login-container:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo h2 {
+  color: var(--main-color);
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.logo span {
+  color: white;
+}
+
+.form-group {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  color: var(--light-color);
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 15px 20px 15px 45px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: var(--main-color);
+  outline: none;
+  box-shadow: 0 0 10px rgba(93, 173, 226, 0.5);
+}
+
+.form-group i {
+  position: absolute;
+  left: 15px;
+  top: 42px;
+  color: var(--main-color);
+  font-size: 1.2rem;
+}
+
+.btn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background: var(--main-color);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background: #4ca1d4;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.register-btn {
+  background: transparent;
+  border: 2px solid var(--main-color);
+  color: var(--main-color);
+}
+
+.register-btn:hover {
+  background: var(--main-color);
+  color: white;
+}
+
+.back-btn {
+  background: transparent;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+.back-btn:hover {
+  background: var(--accent-color);
+  color: white;
+}
+
+.back-btn a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 25px 0;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.divider span {
+  padding: 0 15px;
+}
+
+.error {
+  color: var(--accent-color);
+  font-size: 0.9rem;
+  margin-top: 5px;
+  text-align: center;
+  height: 20px;
+}
+
+.forgot-password {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.forgot-password a {
+  color: var(--main-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}

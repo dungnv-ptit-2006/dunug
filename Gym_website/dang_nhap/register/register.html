@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MT Fitness - Register</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../register/register.css" />
+  </head>
+  <body>
+    <div class="register-container">
+      <div class="logo">
+        <h2>MT <span>FITNESS</span></h2>
+        <p>Start your fitness journey today</p>
+      </div>
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="regUsername">Username</label>
+          <i class="bx bx-user"></i>
+          <input
+            type="text"
+            id="regUsername"
+            name="username"
+            required
+            placeholder="Choose your username"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="regEmail">Email</label>
+          <i class="bx bx-envelope"></i>
+          <input
+            type="email"
+            id="regEmail"
+            name="email"
+            required
+            placeholder="Your email address"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="regPassword">Password</label>
+          <i class="bx bx-lock-alt"></i>
+          <input
+            type="password"
+            id="regPassword"
+            name="password"
+            required
+            placeholder="Create a password"
+          />
+          <div class="password-strength">
+            <div class="password-strength-bar" id="passwordStrengthBar"></div>
+          </div>
+          <div class="password-strength-text" id="passwordStrengthText"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="regConfirmPassword">Confirm Password</label>
+          <i class="bx bx-check-circle"></i>
+          <input
+            type="password"
+            id="regConfirmPassword"
+            name="confirmPassword"
+            required
+            placeholder="Confirm your password"
+          />
+        </div>
+
+        <div id="errorMessage" class="error"></div>
+        <div id="successMessage" class="success"></div>
+
+        <div class="terms">
+          By registering, you agree to our <a href="#">Terms of Service</a> and
+          <a href="#">Privacy Policy</a>
+        </div>
+
+        <button type="submit" class="btn">Create Account</button>
+
+        <button type="button" class="btn login-btn">
+          <a href="../../dang_nhap/login/login.html"
+            >Already have an account? Login</a
+          >
+        </button>
+        <button type="button" class="btn back-btn">
+          <a href="../../code/mt_fitness.html">Back to Home</a>
+        </button>
+      </form>
+    </div>
+
+    <script src="../../dang_nhap/register/register.js"></script>
+  </body>
+</html>
