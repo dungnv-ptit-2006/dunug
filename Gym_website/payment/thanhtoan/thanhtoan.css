@@ -1,41 +1,64 @@
+/* ==================== PHẦN 1: THIẾT LẬP CƠ BẢN ==================== */
+
+/* Định nghĩa các biến màu sắc dùng xuyên suốt dự án */
+:root {
+  --primary-color: #6bbbf0; /* Màu xanh dương chính */
+  --primary-dark: #2980b9; /* Màu xanh dương đậm */
+  --secondary-color: #2ecc71; /* Màu xanh lá */
+  --dark-color: #fff; /* Màu chữ trắng */
+  --light-color: #f5f5f5; /* Màu nền sáng */
+  --gray-color: #aaa; /* Màu chữ xám nhạt */
+  --light-gray: #444; /* Màu viền xám đậm */
+  --danger-color: #e74c3c; /* Màu đỏ báo lỗi */
+  --success-color: #2ecc71; /* Màu xanh lá thành công */
+  --warning-color: #f39c12; /* Màu cam cảnh báo */
+}
+
+/* Reset CSS để xóa các style mặc định */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  text-decoration: none;
   list-style: none;
   border: none;
   outline: none;
   scroll-behavior: smooth;
-  font-family: -apple-system, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-:root {
-  --background: #000;
-  --snd-bg-color: #111;
-  --text-color: #fff;
-  --main-color: #5dade2;
-  --success-color: #28a745;
-  --warning-color: #ffc107;
-  --danger-color: #dc3545;
-}
+/* ==================== PHẦN 2: LAYOUT CHUNG ==================== */
 
+/* Thiết lập style cho body */
 body {
-  background-color: #111;
-  color: var(--text-color);
+  background-color: #000;
+  color: var(--dark-color);
   position: relative;
   overflow-x: hidden;
+  line-height: 1.6;
 }
 
-body::before {
-  content: "";
+/* Lớp nền gradient */
+.gradient-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(107, 187, 240, 0.1) 0%,
+    rgba(164, 89, 124, 0.1) 100%
+  );
   z-index: -1;
 }
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 8rem 5% 4rem;
+}
+
+/* ==================== PHẦN 3: HEADER ==================== */
 
 header {
   position: fixed;
@@ -45,379 +68,505 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background: rgba(0, 0, 0, 0.95);
-  border-bottom: 1px solid rgba(93, 173, 226, 0.2);
+  padding: 1.5rem 5%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
-/* ----------------------logo--------------------- */
 
 .logo {
-  font-size: 2.5rem;
-  color: var(--text-color);
-  font-weight: bolder;
-  cursor: pointer;
-  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--dark-color);
+  transition: all 0.3s ease;
 }
 
-.logo:hover {
-  transform: scale(1.05);
-  text-shadow: 0 0 20px var(--main-color);
-}
-
-.logo span {
-  color: var(--main-color);
-}
-
+/* Style cho nút quay lại */
 .back-btn {
-  padding: 15px 30px;
-  background-color: #74c0fc;
-  color: var(--background);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary-color);
+  color: #000;
   border-radius: 50px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(93, 173, 226, 0.3);
   cursor: pointer;
+  border: 1px solid var(--primary-color);
 }
 
-.back-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(93, 173, 226, 0.5);
-}
-/* ---------------------------------container---------------------------------- */
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 12rem 2rem 4rem;
-}
-
-.page-title {
+/* ==================== PHẦN 4: NỘI DUNG CHÍNH ==================== */
+.hero-text {
   text-align: center;
-  font-size: 4.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #74c0fc;
-  background-clip: text;
-}
-
-.page-subtitle {
-  text-align: center;
-  font-size: 1.8rem;
-  margin-bottom: 4rem;
-  opacity: 0.8;
-}
-
-.payment-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.order-summary {
-  background: rgba(17, 17, 17, 0.9);
-  padding: 3rem;
-  border-radius: 20px;
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(93, 173, 226, 0.2);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-  height: fit-content;
-  position: sticky;
-  top: 12rem;
-}
-
-.payment-form {
-  background: rgba(17, 17, 17, 0.9);
-  padding: 3rem;
-  border-radius: 20px;
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(93, 173, 226, 0.2);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-}
-
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  color: var(--main-color);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.section-title i {
-  font-size: 2.8rem;
-}
-
-.order-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.order-item:last-child {
-  border-bottom: none;
-}
-
-.item-info h4 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.item-info p {
-  font-size: 1.4rem;
-  opacity: 0.7;
-}
-
-.item-price {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--main-color);
-}
-
-.customer-info {
-  background: rgba(93, 173, 226, 0.1);
-  padding: 2rem;
-  border-radius: 15px;
-  border: 1px solid var(--main-color);
-  margin-bottom: 2rem;
-}
-
-.customer-info h4 {
-  color: var(--main-color);
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.customer-info p {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-.total-section {
-  background: rgba(93, 173, 226, 0.1);
-  padding: 2rem;
-  border-radius: 15px;
-  border: 1px solid var(--main-color);
-  margin-top: 2rem;
-}
-
-.total-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  font-size: 1.6rem;
-}
-
-.total-row.final {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--main-color);
-  border-top: 2px solid rgba(93, 173, 226, 0.3);
-  padding-top: 1rem;
-  margin-top: 1rem;
-}
-
-.payment-methods {
   margin-bottom: 3rem;
 }
 
-.method-grid {
+.hero-text h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--dark-color);
+}
+
+.hero-text h1 span {
+  color: var(--primary-color);
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  color: var(--gray-color);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ==================== PHẦN 5: THANH TIẾN TRÌNH ==================== */
+.registration-flow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  gap: 2rem;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #111;
+  color: var(--gray-color);
+  border-radius: 50%;
+  font-weight: 700;
+  border: 2px solid var(--light-gray);
+}
+
+.step.active .step-number {
+  background-color: var(--primary-color);
+  color: #000;
+  border-color: var(--primary-color);
+}
+
+.step-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-color);
+}
+
+.step.active .step-text {
+  color: var(--primary-color);
+}
+/* ==================== PHẦN 6: KHỐI THANH TOÁN ==================== */
+.payment-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2rem;
+}
+/* ==================== PHẦN 7: TỔNG QUAN ĐƠN HÀNG ==================== */
+
+/* Style cho khối tổng quan đơn hàng */
+.order-summary {
+  background-color: #111;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(93, 173, 226, 0.1);
+}
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--dark-color);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.section-title i {
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+/* ==================== PHẦN 8: THÔNG TIN KHÁCH HÀNG ==================== */
+.customer-card {
+  display: flex;
   gap: 1.5rem;
   margin-bottom: 2rem;
+  padding-bottom: 1.5rem; 
+  border-bottom: 1px solid var(--light-gray); 
+}
+.customer-avatar {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(93, 173, 226, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  color: var(--primary-color); 
+  font-size: 2rem; 
+  flex-shrink: 0;
+}
+.customer-info {
+  flex: 1; 
+}
+.customer-info h4 {
+  font-size: 1.1rem; 
+  font-weight: 700; 
+  margin-bottom: 0.8rem; 
+  color: var(--dark-color); /
+}
+.customer-info p {
+  font-size: 0.95rem; 
+  color: var(--gray-color); 
+  margin-bottom: 0.5rem; 
+  display: flex;
+  align-items: center; 
+  gap: 0.5rem; 
+}
+.customer-info p i {
+  font-size: 1.1rem; 
+}
+/* ==================== PHẦN 9: CHI TIẾT ĐƠN HÀNG ==================== */
+.order-item {
+  display: flex;
+  align-items: center; 
+  gap: 1rem; 
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem; 
+  border-bottom: 1px solid var(--light-gray); 
+}
+.order-item:last-child {
+  margin-bottom: 0; 
+  padding-bottom: 0; 
+  border-bottom: none; 
 }
 
-.payment-method {
-  background: rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(93, 173, 226, 0.3);
-  border-radius: 15px;
-  padding: 2rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: center;
+.item-icon {
+  width: 50px; 
+  height: 50px; 
+  background-color: rgba(93, 173, 226, 0.1); 
+  border-radius: 12px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  color: var(--primary-color); 
+  font-size: 1.8rem;
+  flex-shrink: 0; 
 }
 
-.payment-method:hover {
-  border-color: var(--main-color);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(93, 173, 226, 0.3);
+.item-info {
+  flex: 1; 
 }
 
-.payment-method.active {
-  border-color: var(--main-color);
-  background: rgba(93, 173, 226, 0.1);
+.item-info h4 {
+  font-size: 1.1rem;
+  font-weight: 600; 
+  margin-bottom: 0.3rem; 
+  color: var(--dark-color); 
 }
 
-.payment-method i {
-  font-size: 3rem;
-  color: var(--main-color);
-  margin-bottom: 1rem;
+.item-info p {
+  font-size: 0.9rem; 
+  color: var(--gray-color); 
 }
 
-.payment-method h4 {
-  font-size: 1.6rem;
-  font-weight: 600;
+.item-price {
+  font-size: 1.3rem; 
+  font-weight: 700; 
+  color: var(--primary-color); 
 }
-
-.card-form {
-  display: none;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 2rem;
-  border-radius: 15px;
-  margin-top: 2rem;
-}
-
-.card-form.active {
-  display: block;
-  animation: slideDown 0.3s ease;
-}
-
-.qr-payment {
-  display: none;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 2rem;
-  border-radius: 15px;
-  margin-top: 2rem;
-  text-align: center;
-}
-
-.qr-payment.active {
-  display: block;
-  animation: slideDown 0.3s ease;
-}
-
-.qr-code {
-  width: 200px;
-  height: 200px;
-  margin: 20px auto;
-  display: block;
-  border: 1px solid rgba(93, 173, 226, 0.5);
-  border-radius: 10px;
-  padding: 10px;
-  background: white;
-}
-
-.bank-info {
-  margin-top: 1.5rem;
+/* ==================== PHẦN 10: TỔNG CỘNG ==================== */
+.total-card {
+  background-color: rgba(93, 173, 226, 0.05); 
+  border: 1px solid var(--primary-color); 
+  border-radius: 12px; 
   padding: 1.5rem;
-  background: rgba(93, 173, 226, 0.1);
-  border-radius: 10px;
-  border: 1px solid rgba(93, 173, 226, 0.3);
+  margin-top: 2rem; 
+}
+.total-row {
+  display: flex; 
+  justify-content: space-between; 
+  margin-bottom: 0.8rem; 
+  font-size: 1rem; 
+  color: var(--gray-color); 
 }
 
-.bank-info p {
-  font-size: 1.4rem;
-  margin-bottom: 0.8rem;
-  text-align: left;
+.total-row.final {
+  font-size: 1.3rem; 
+  font-weight: 700; 
+  color: var(--dark-color); 
+  margin-top: 1rem; 
+  padding-top: 1rem; 
+  border-top: 1px solid var(--light-gray); 
+}
+.total-row.final span:last-child {
+  color: var(--primary-color); 
+}
+/* ==================== PHẦN 11: FORM THANH TOÁN ==================== */
+
+/* Style cho form thanh toán */
+.payment-form {
+  background-color: #111; 
+  border-radius: 15px; 
+  padding: 2rem; 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); 
+  border: 1px solid rgba(93, 173, 226, 0.1); 
 }
 
-.form-group {
-  margin-bottom: 2rem;
+/* Style cho các tab phương thức */
+.method-tabs {
+  display: flex; 
+  gap: 0.5rem; 
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--light-gray);
+  padding-bottom: 1rem; 
+}
+
+/* Style cho mỗi tab */
+.method-tab {
+  padding: 0.8rem 1.2rem; 
+  background-color: #222; 
+  border-radius: 8px; 
+  font-size: 0.95rem; 
+  font-weight: 600; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  display: flex; 
+  align-items: center;
+  gap: 0.5rem; 
+  border: 1px solid var(--light-gray); 
+  color: var(--dark-color); 
+}
+
+.method-tab.active {
+  background-color: var(--primary-color); 
+  color: #000; 
+  border-color: var(--primary-color); 
+}
+
+.method-tab i {
+  font-size: 1.2rem; 
+}
+
+.method-content {
+  display: none; 
+}
+
+.method-content.active {
+  display: block; 
+  animation: fadeIn 0.3s ease; 
+}
+
+/* ==================== PHẦN 12: FORM THẺ TÍN DỤNG ==================== */
+.card-form {
+  margin-top: 1rem; 
 }
 
 .form-row {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 1.5rem;
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 1.5rem; 
+  margin-bottom: 1.5rem; 
+}
+.form-group {
+  margin-bottom: 1.5rem; 
 }
 
 .form-group label {
   display: block;
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 0.8rem;
-  color: var(--main-color);
+  font-size: 0.95rem;
+  font-weight: 600; 
+  margin-bottom: 0.5rem;
+  color: var(--dark-color); 
 }
 
-.form-control {
+.input-with-icon {
+  position: relative; 
+}
+.input-with-icon i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-color);
+  font-size: 1.2rem;
+}
+
+.input-with-icon input {
   width: 100%;
-  padding: 1.2rem;
-  background: rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(93, 173, 226, 0.3);
-  border-radius: 10px;
-  color: var(--text-color);
-  font-size: 1.4rem;
+  padding: 1rem 1rem 1rem 3rem;
+  background-color: #222;
+  color: #fff;
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  font-size: 1rem;
   transition: all 0.3s ease;
 }
 
-.form-control:focus {
-  border-color: var(--main-color);
-  box-shadow: 0 0 20px rgba(93, 173, 226, 0.3);
-  transform: translateY(-2px);
+.input-with-icon input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(93, 173, 226, 0.2);
 }
-
-.form-control::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+/* ==================== PHẦN 13: THANH TOÁN QR ==================== */
+.qr-payment {
+  text-align: center;
+  margin-top: 1rem;
 }
 
 .security-info {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  background: rgba(40, 167, 69, 0.1);
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid var(--success-color);
-  margin-bottom: 2rem;
+  justify-content: center;
+  gap: 0.8rem;
+  background-color: rgba(46, 204, 113, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  color: var(--success-color);
 }
 
 .security-info i {
-  font-size: 2rem;
-  color: var(--success-color);
+  font-size: 1.5rem;
 }
 
-.security-info p {
-  font-size: 1.4rem;
-  color: var(--success-color);
+.qr-code {
+  width: 200px;
+  height: 200px;
+  margin: 1rem auto;
+  border: 1px solid var(--light-gray);
+  border-radius: 12px;
+  padding: 1rem;
+  background-color: #222;
 }
 
-.process-btn {
-  width: 100%;
-  padding: 2rem;
-  background-color: #20c997;
-  color: var(--text-color);
-  border-radius: 50px;
-  font-size: 2rem;
-  font-weight: 700;
+.bank-info {
+  background-color: rgba(93, 173, 226, 0.05);
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.bank-info p {
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  color: var(--dark-color);
+}
+
+.bank-info p strong {
+  color: var(--primary-color);
+}
+
+/* ==================== PHẦN 14: VÍ ĐIỆN TỬ ==================== */
+
+.wallet-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.wallet-option {
+  background-color: #222;
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  padding: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wallet-option:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+.wallet-option img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.wallet-option span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+/* ==================== PHẦN 15: THÔNG BÁO BẢO MẬT ==================== */
+.security-note {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: rgba(93, 173, 226, 0.05);
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 2rem 0;
+  color: var(--primary-color);
+}
+
+.security-note i {
+  font-size: 1.5rem;
+}
+
+.security-note p {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ==================== PHẦN 16: NÚT THANH TOÁN ==================== */
+.submit-btn {
+  width: 100%;
+  padding: 1.2rem;
+  background-color: var(--primary-color);
+  color: #000;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
-.process-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(40, 167, 69, 0.6);
+.submit-btn:hover {
+  background-color: var(--primary-dark);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(93, 173, 226, 0.4);
 }
 
-.process-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
+.submit-btn i {
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
 }
 
-.loading {
-  display: none;
+.submit-btn:hover i {
+  transform: scale(1.2);
 }
-
-.loading.active {
-  display: inline-block;
-  animation: spin 1s linear infinite;
-}
+/* ==================== PHẦN 17: MODAL THÀNH CÔNG ==================== */
 
 .success-modal {
   position: fixed;
@@ -425,101 +574,99 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
 }
 
 .success-modal.active {
-  display: flex;
-  animation: fadeIn 0.3s ease;
+  opacity: 1;
+  visibility: visible;
 }
 
 .modal-content {
-  background: var(--snd-bg-color);
-  padding: 4rem;
-  border-radius: 20px;
+  background-color: #111;
+  border-radius: 15px;
+  padding: 3rem;
   text-align: center;
-  border: 2px solid var(--success-color);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   max-width: 500px;
   width: 90%;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--primary-color);
 }
 
-.modal-content i {
-  font-size: 6rem;
+.success-modal.active .modal-content {
+  transform: translateY(0);
+}
+
+.modal-icon {
+  width: 80px;
+  height: 80px;
+  background-color: rgba(46, 204, 113, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
   color: var(--success-color);
-  margin-bottom: 2rem;
+  font-size: 3rem;
 }
 
 .modal-content h2 {
-  font-size: 3rem;
+  font-size: 2rem;
+  font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--success-color);
+  color: var(--dark-color);
 }
 
 .modal-content p {
-  font-size: 1.6rem;
+  font-size: 1.1rem;
+  color: var(--gray-color);
   margin-bottom: 2rem;
-  opacity: 0.8;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
 }
 
 .modal-btn {
-  padding: 1.5rem 3rem;
-  background-color: #74c0fc;
-  color: var(--background);
-  border-radius: 50px;
-  font-size: 1.6rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-btn.outline {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.modal-btn {
+  background-color: var(--primary-color);
+  color: #000;
+  border: 1px solid var(--primary-color);
 }
 
 .modal-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(93, 173, 226, 0.5);
+  box-shadow: 0 5px 15px rgba(93, 173, 226, 0.3);
 }
 
-.floating-elements {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.floating-circle {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(93, 173, 226, 0.1);
-
-  animation: float 6s ease-in-out infinite;
-}
-
-.floating-circle:nth-child(1) {
-  width: 100px;
-  height: 100px;
-  top: 20%;
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.floating-circle:nth-child(2) {
-  width: 150px;
-  height: 150px;
-  top: 60%;
-  right: 10%;
-  animation-delay: 2s;
-}
-
-.floating-circle:nth-child(3) {
-  width: 80px;
-  height: 80px;
-  bottom: 20%;
-  left: 70%;
-  animation-delay: 4s;
+.modal-btn i {
+  font-size: 1.2rem;
 }

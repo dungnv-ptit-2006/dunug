@@ -10,40 +10,77 @@
     />
     <link rel="stylesheet" href="../thanhtoan/thanhtoan.css" />
   </head>
-  <body>
-    <div class="floating-elements">
-      <div class="floating-circle"></div>
-      <div class="floating-circle"></div>
-      <div class="floating-circle"></div>
-    </div>
 
+  <body>
+    <div class="gradient-bg"></div>
+
+    <!-- Header -->
     <header>
-      <a href="#" class="logo">MT <span>FITNESS</span></a>
+      <a href="../../code/mt_fitness.html" class="logo">
+        MT <span>FITNESS</span>
+      </a>
       <button class="back-btn" onclick="goBack()">
-        <i class="bx bx-arrow-back"></i> Quay Lại
+        <i class="bx bx-arrow-back"></i> Quay lại
       </button>
     </header>
 
-    <div class="container">
-      <h1 class="page-title">Thanh Toán</h1>
-      <p class="page-subtitle">Hoàn tất đăng ký khóa học của bạn</p>
+    <!----------------------- Main content------------------------ -->
+    <main class="container">
+      <div class="hero-text">
+        <h1>Hoàn tất <span>thanh toán</span></h1>
+        <p>Chọn phương thức thanh toán và hoàn tất đăng ký của bạn</p>
+      </div>
 
+      <!--------------- Thanh tiến trình đăng ký--------------------------- -->
+      <div class="registration-flow">
+        <!-- Bước 1: Chọn gói -->
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-text">Chọn gói</div>
+        </div>
+        <!-- Bước 2: Thông tin -->
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-text">Thông tin</div>
+        </div>
+        <!-- Bước 3: Thanh toán (active) -->
+        <div class="step active">
+          <div class="step-number">3</div>
+          <div class="step-text">Thanh toán</div>
+        </div>
+      </div>
+
+      <!-------------------Container chính cho phần thanh toán ------------------------>
       <div class="payment-container">
-        <!-- Order Summary -->
         <div class="order-summary">
           <h2 class="section-title">
             <i class="bx bx-receipt"></i>
-            Tổng Quan Đơn Hàng
+            Tổng quan đơn hàng
           </h2>
 
-          <div id="customerInfo" class="customer-info">
-            <h4>Thông Tin Khách Hàng</h4>
-            <p><span>Họ tên:</span> <span id="customerName">-</span></p>
-            <p><span>Email:</span> <span id="customerEmail">-</span></p>
-            <p><span>Điện thoại:</span> <span id="customerPhone">-</span></p>
+          <!-- Thông tin khách hàng -->
+          <div class="customer-card">
+            <div class="customer-avatar">
+              <i class="bx bx-user"></i>
+            </div>
+            <div class="customer-info">
+              <h4>Thông tin khách hàng</h4>
+              <!-- Các thông tin khách hàng sẽ được điền bằng JS -->
+              <p><i class="bx bx-user"></i> <span id="customerName">-</span></p>
+              <p>
+                <i class="bx bx-envelope"></i> <span id="customerEmail">-</span>
+              </p>
+              <p>
+                <i class="bx bx-phone"></i> <span id="customerPhone">-</span>
+              </p>
+            </div>
           </div>
 
+          <!-- Thông tin gói tập -->
           <div class="order-item">
+            <div class="item-icon">
+              <i class="bx bx-dumbbell"></i>
+            </div>
             <div class="item-info">
               <h4 id="planName">Gói Basic</h4>
               <p>Thời hạn: 1 tháng</p>
@@ -52,7 +89,19 @@
             <div class="item-price" id="planPrice">$40</div>
           </div>
 
-          <div class="total-section">
+          <!-- Ngày bắt đầu -->
+          <div class="order-item">
+            <div class="item-icon">
+              <i class="bx bx-calendar"></i>
+            </div>
+            <div class="item-info">
+              <h4>Ngày bắt đầu</h4>
+              <p id="startDate">Hôm nay</p>
+            </div>
+          </div>
+
+          <!-- Tổng thanh toán -->
+          <div class="total-card">
             <div class="total-row">
               <span>Giá gói:</span>
               <span id="subtotal">$40</span>
@@ -72,126 +121,173 @@
           </div>
         </div>
 
-        <!-- Payment Form -->
+        <!-- Phần form thanh toán -->
         <div class="payment-form">
           <h2 class="section-title">
             <i class="bx bx-credit-card"></i>
-            Phương Thức Thanh Toán
+            <!-- Icon thẻ tín dụng -->
+            Phương thức thanh toán
           </h2>
 
+          <!-- Các phương thức thanh toán -->
           <div class="payment-methods">
-            <div class="method-grid">
-              <div class="payment-method active" data-method="card">
-                <i class="bx bx-credit-card"></i>
-                <h4>Thẻ Tín Dụng</h4>
-              </div>
-              <div class="payment-method" data-method="paypal">
-                <i class="bx bxl-paypal"></i>
-                <h4>PayPal</h4>
-              </div>
-              <div class="payment-method" data-method="bank">
-                <i class="bx bx-bank"></i>
-                <h4>Chuyển Khoản</h4>
-              </div>
-              <div class="payment-method" data-method="wallet">
-                <i class="bx bx-wallet"></i>
-                <h4>Ví Điện Tử</h4>
+            <!-- Tab chọn phương thức -->
+            <div class="method-tabs">
+              <button class="method-tab active" data-method="card">
+                <i class="bx bx-credit-card"></i> Thẻ tín dụng
+              </button>
+              <button class="method-tab" data-method="bank">
+                <i class="bx bx-transfer"></i> Chuyển khoản
+              </button>
+              <button class="method-tab" data-method="wallet">
+                <i class="bx bx-wallet"></i> Ví điện tử
+              </button>
+            </div>
+
+            <!-- Nội dung phương thức thẻ tín dụng (active mặc định) -->
+            <div class="method-content active" id="cardMethod">
+              <div class="card-form">
+                <!-- Form nhập thông tin thẻ -->
+                <div class="form-group">
+                  <label for="cardNumber">Số thẻ *</label>
+                  <div class="input-with-icon">
+                    <i class="bx bx-credit-card"></i>
+                    <input
+                      type="text"
+                      id="cardNumber"
+                      placeholder="1234 5678 9012 3456"
+                      maxlength="19"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <!-- Ngày hết hạn -->
+                  <div class="form-group">
+                    <label for="expiryDate">Ngày hết hạn *</label>
+                    <div class="input-with-icon">
+                      <i class="bx bx-calendar"></i>
+                      <input
+                        type="text"
+                        id="expiryDate"
+                        placeholder="MM/YY"
+                        maxlength="5"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <!-- Mã CVV -->
+                  <div class="form-group">
+                    <label for="cvv">CVV *</label>
+                    <div class="input-with-icon">
+                      <i class="bx bx-lock"></i>
+                      <input
+                        type="text"
+                        id="cvv"
+                        placeholder="123"
+                        maxlength="4"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <!-- Tên trên thẻ -->
+                <div class="form-group">
+                  <label for="cardName">Tên trên thẻ *</label>
+                  <div class="input-with-icon">
+                    <i class="bx bx-user"></i>
+                    <input
+                      type="text"
+                      id="cardName"
+                      placeholder="NGUYEN VAN A"
+                      required
+                    />
+                  </div>
+                </div>
               </div>
             </div>
 
-            <!-- Card Form -->
-            <div class="card-form active" id="cardForm">
-              <div class="form-group">
-                <label for="cardNumber">Số Thẻ *</label>
-                <input
-                  type="text"
-                  id="cardNumber"
-                  class="form-control"
-                  placeholder="1234 5678 9012 3456"
-                  maxlength="19"
-                  required
-                />
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="expiryDate">Ngày Hết Hạn *</label>
-                  <input
-                    type="text"
-                    id="expiryDate"
-                    class="form-control"
-                    placeholder="MM/YY"
-                    maxlength="5"
-                    required
-                  />
+            <!-- Nội dung phương thức chuyển khoản -->
+            <div class="method-content" id="bankMethod">
+              <div class="qr-payment">
+                <div class="security-info">
+                  <i class="bx bx-qr-scan"></i>
+                  <p>Vui lòng quét mã QR để hoàn tất thanh toán</p>
                 </div>
-                <div class="form-group">
-                  <label for="cvv">CVV *</label>
-                  <input
-                    type="text"
-                    id="cvv"
-                    class="form-control"
-                    placeholder="123"
-                    maxlength="4"
-                    required
-                  />
+                <img src="../../assets/qr.png" alt="QR Code" class="qr-code" />
+                <div class="bank-info">
+                  <p><strong>Số tài khoản:</strong> 9373836240</p>
+                  <p><strong>Ngân hàng:</strong> Vietcombank</p>
+                  <p><strong>Chủ tài khoản:</strong> CÔNG TY TNHH MT FITNESS</p>
+                  <p><strong>Nội dung:</strong> Tên KH + Số điện thoại</p>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="cardName">Tên Trên Thẻ *</label>
-                <input
-                  type="text"
-                  id="cardName"
-                  class="form-control"
-                  placeholder="NGUYEN VAN A"
-                  required
-                />
+                <div class="security-info">
+                  <i class="bx bx-time"></i>
+                  <p>Mã QR sẽ hết hạn sau 5 phút</p>
+                </div>
               </div>
             </div>
 
-            <!-- QR Payment -->
-            <div class="qr-payment" id="qrPayment">
-              <div class="security-info">
-                <i class="bx bx-qr-scan"></i>
-                <p>Vui lòng quét mã QR để hoàn tất thanh toán</p>
-              </div>
-              <img src="../../assets/qr.png" alt="QR Code" class="qr-code" />
-              <div class="bank-info">
-                <p><strong>Số tài khoản:</strong> 9373836240</p>
-                <p><strong>Ngân hàng:</strong> Vietcombank</p>
-                <p><strong>Chủ tài khoản:</strong> CÔNG TY TNHH MT FITNESS</p>
-                <p><strong>Nội dung:</strong> Tên KH + Số điện thoại</p>
-              </div>
-              <div class="security-info">
-                <i class="bx bx-time"></i>
-                <p>Mã QR sẽ hết hạn sau 5 phút</p>
+            <!-- Nội dung phương thức ví điện tử -->
+            <div class="method-content" id="walletMethod">
+              <div class="wallet-options">
+                <!-- Các lựa chọn ví điện tử -->
+                <button class="wallet-option">
+                  <img src="../../assets/momo.png" alt="Momo" />
+                  <span>Ví Momo</span>
+                </button>
+                <button class="wallet-option">
+                  <img src="../../assets/zalopay.png" alt="ZaloPay" />
+                  <span>ZaloPay</span>
+                </button>
+                <button class="wallet-option">
+                  <img src="../../assets/vnpay.png" alt="VNPay" />
+                  <span>VNPay</span>
+                </button>
               </div>
             </div>
           </div>
 
-          <div class="security-info">
-            <i class="bx bx-shield-check"></i>
+          <div class="security-note">
+            <i class="bx bx-shield"></i>
             <p>Thanh toán của bạn được bảo mật với mã hóa SSL 256-bit</p>
           </div>
 
-          <button type="button" class="process-btn" id="processBtn">
-            <i class="bx bx-lock-alt"></i>
-            <span class="btn-text">Xử Lý Thanh Toán</span>
-            <i class="bx bx-loader-alt loading" id="loadingIcon"></i>
+          <button type="button" class="submit-btn" id="processBtn">
+            <span class="btn-text">Tiến hành thanh toán</span>
+            <i class="bx bx-check"></i>
           </button>
         </div>
       </div>
-    </div>
+    </main>
 
-    <!-- Success Modal -->
+    <!-- Modal thông báo thanh toán thành công (ẩn ban đầu) -->
     <div class="success-modal" id="successModal">
       <div class="modal-content">
-        <i class="bx bx-check-circle"></i>
-        <h2>Thanh Toán Thành Công!</h2>
+        <div class="modal-icon">
+          <i class="bx bx-check-circle"></i>
+          <!-- Icon thành công -->
+        </div>
+        <h2>Thanh toán thành công!</h2>
         <p>
-          Cảm ơn bạn đã đăng ký khóa học. Chúng tôi đã gửi thông tin chi tiết
+          Chào mừng bạn đến với MT FITNESS. Chúng tôi đã gửi thông tin chi tiết
           qua email của bạn.
         </p>
-        <button class="modal-btn" onclick="goHome()">Về Trang Chủ</button>
+        <!-- Các nút hành động sau khi thanh toán -->
+        <div class="modal-buttons">
+          <button
+            class="modal-btn outline"
+            onclick="window.location.href='../../code/mt_fitness.html'"
+          >
+            <i class="bx bx-home"></i> Về trang chủ
+          </button>
+          <button
+            class="modal-btn"
+            onclick="window.location.href='../../code/mt_fitness.html#schedule'"
+          >
+            <i class="bx bx-calendar"></i> Đặt lịch tập ngay
+          </button>
+        </div>
       </div>
     </div>
 

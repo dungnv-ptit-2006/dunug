@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!currentUser || !currentUser.course) {
       showRegistrationAlert(
         "Bạn chưa đăng ký khóa học nào",
-        "../payment/dangky_kh/đăng_ký_kh.html"
+        "../payment/dangky_kh/dangky_kh.html"
       );
       return;
     }
@@ -580,7 +580,7 @@ document.querySelectorAll(".register-btn").forEach((btn) => {
     if (!currentUser || !currentUser.course) {
       showRegistrationAlert(
         "Vui lòng đăng ký khóa học để đặt lịch",
-        "../payment/dangky_kh/đăng_ký_kh.html"
+        "../payment/dangky_kh/dangky_kh.html"
       );
       return;
     }

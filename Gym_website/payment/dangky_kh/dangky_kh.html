@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng Ký Gói Tập - MT FITNESS</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../dangky_kh/dangky_kh.css" />
+  </head>
+  <body>
+    <!-- Background gradient -->
+    <div class="gradient-bg"></div>
+
+    <!-- Header -->
+    <header>
+      <a href="../../code/mt_fitness.html" class="logo">
+        MT <span>FITNESS</span>
+      </a>
+      <button class="back-btn" onclick="window.history.back()">
+        <i class="bx bx-arrow-back"></i> Quay lại
+      </button>
+    </header>
+
+    <!-- Main content -->
+    <main class="container">
+      <!-- Phần giới thiệu -->
+      <div class="hero-text">
+        <h1>Bắt đầu hành trình <span>FITNESS</span> của bạn</h1>
+        <p>Chọn gói tập phù hợp và đăng ký ngay hôm nay</p>
+      </div>
+
+      <!-- Các bước đăng ký -->
+      <div class="registration-flow">
+        <div class="step active">
+          <div class="step-number">1</div>
+          <div class="step-text">Chọn gói</div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-text">Thông tin</div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-text">Thanh toán</div>
+        </div>
+      </div>
+
+      <!-- Phần chính chứa form và gói tập -->
+      <div class="registration-container">
+        <!-- Phần các gói tập -->
+        <div class="plans-section">
+          <h2 class="section-title">
+            <i class="bx bx-analyse"></i> Các gói tập luyện
+          </h2>
+          <p class="section-subtitle">
+            Chọn gói phù hợp với mục tiêu và ngân sách của bạn
+          </p>
+
+          <div class="plans-grid">
+            <!-- Gói BASIC -->
+            <div class="plan-card" data-plan="basic" data-price="40">
+              <div class="plan-badge">Phổ biến</div>
+              <!-- Nhãn gói phổ biến -->
+              <div class="plan-header">
+                <h3 class="plan-name">BASIC</h3>
+                <div class="plan-price">
+                  <span class="price">$40</span>
+                  <span class="period">/tháng</span>
+                </div>
+              </div>
+              <ul class="plan-features">
+                <li><i class="bx bx-check"></i> Smart Workout Plan</li>
+                <li><i class="bx bx-check"></i> At Home Workout</li>
+                <li><i class="bx bx-check"></i> 24/7 Support</li>
+                <li><i class="bx bx-check"></i> Mobile App Access</li>
+              </ul>
+              <!-- Nút chọn gói -->
+              <button
+                class="select-plan-btn"
+                onclick="selectPlan('basic', 40, 'BASIC')"
+              >
+                <i class="bx bx-check-circle"></i> Chọn gói này
+              </button>
+            </div>
+
+            <!-- Gói PRO -->
+            <div class="plan-card highlight" data-plan="pro" data-price="65">
+              <div class="plan-header">
+                <h3 class="plan-name">PRO</h3>
+                <div class="plan-price">
+                  <span class="price">$65</span>
+                  <span class="period">/tháng</span>
+                </div>
+              </div>
+              <ul class="plan-features">
+                <li><i class="bx bx-check"></i> Pro GYMS Access</li>
+                <li><i class="bx bx-check"></i> Boxing Classes</li>
+                <li><i class="bx bx-check"></i> Smart Workout Plan</li>
+                <li><i class="bx bx-check"></i> At Home Workout</li>
+                <li><i class="bx bx-check"></i> Personal Trainer</li>
+              </ul>
+              <button
+                class="select-plan-btn"
+                onclick="selectPlan('pro', 65, 'PRO')"
+              >
+                <i class="bx bx-check-circle"></i> Chọn gói này
+              </button>
+            </div>
+
+            <!-- Gói PREMIUM -->
+            <div class="plan-card" data-plan="premium" data-price="120">
+              <div class="plan-header">
+                <h3 class="plan-name">PREMIUM</h3>
+                <div class="plan-price">
+                  <span class="price">$120</span>
+                  <span class="period">/tháng</span>
+                </div>
+              </div>
+              <ul class="plan-features">
+                <li><i class="bx bx-check"></i> ELITE GYMS & Classes</li>
+                <li><i class="bx bx-check"></i> Pro GYMS Access</li>
+                <li><i class="bx bx-check"></i> Boxing Classes</li>
+                <li><i class="bx bx-check"></i> Smart Workout Plan</li>
+                <li><i class="bx bx-check"></i> At Home Workout</li>
+                <li><i class="bx bx-check"></i> VIP Personal Trainer</li>
+                <li><i class="bx bx-check"></i> Nutrition Consultant</li>
+              </ul>
+              <button
+                class="select-plan-btn"
+                onclick="selectPlan('premium', 120, 'PREMIUM')"
+              >
+                <i class="bx bx-check-circle"></i> Chọn gói này
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phần form đăng ký -->
+        <div class="form-section">
+          <form id="registrationForm">
+            <div class="form-header">
+              <h2><i class="bx bx-user"></i> Thông tin cá nhân</h2>
+              <p>Vui lòng điền đầy đủ thông tin để hoàn tất đăng ký</p>
+            </div>
+
+            <!-- Hiển thị gói đã chọn -->
+            <div id="selectedPlanInfo" class="selected-plan-info">
+              <div class="selected-plan-content">
+                <h3>
+                  Gói đã chọn: <span id="selectedPlanName">Chưa chọn</span>
+                </h3>
+                <div class="plan-summary">
+                  <span>Tổng tiền:</span>
+                  <span class="total-price" id="totalPrice">$0</span>
+                </div>
+              </div>
+              <!-- Nút thay đổi gói -->
+              <button
+                type="button"
+                class="change-plan-btn"
+                onclick="resetPlanSelection()"
+              >
+                <i class="bx bx-refresh"></i> Thay đổi
+              </button>
+            </div>
+
+            <!-- Các trường thông tin -->
+            <div class="form-grid">
+              <!-- Họ -->
+              <div class="form-group">
+                <label for="firstName">Họ *</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  required
+                  placeholder="Nhập họ của bạn"
+                />
+                <div class="error-message" id="firstNameError">
+                  Vui lòng nhập họ
+                </div>
+              </div>
+              <!-- Tên -->
+              <div class="form-group">
+                <label for="lastName">Tên *</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  required
+                  placeholder="Nhập tên của bạn"
+                />
+                <div class="error-message" id="lastNameError">
+                  Vui lòng nhập tên
+                </div>
+              </div>
+              <!-- Email -->
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  placeholder="example@email.com"
+                />
+                <div class="error-message" id="emailError">
+                  Vui lòng nhập email hợp lệ
+                </div>
+              </div>
+              <!-- Số điện thoại -->
+              <div class="form-group">
+                <label for="phone">Số điện thoại *</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  required
+                  placeholder="Nhập số điện thoại"
+                />
+                <div class="error-message" id="phoneError">
+                  Vui lòng nhập số điện thoại
+                </div>
+              </div>
+              <!-- Tuổi -->
+              <div class="form-group">
+                <label for="age">Tuổi *</label>
+                <input
+                  type="number"
+                  id="age"
+                  min="16"
+                  max="50"
+                  required
+                  placeholder="16-50"
+                />
+                <div class="error-message" id="ageError">
+                  Tuổi phải từ 16-50
+                </div>
+              </div>
+              <!-- Giới tính -->
+              <div class="form-group">
+                <label for="gender">Giới tính *</label>
+                <select id="gender" required>
+                  <option value="">Chọn giới tính</option>
+                  <option value="male">Nam</option>
+                  <option value="female">Nữ</option>
+                  <option value="other">Khác</option>
+                </select>
+                <div class="error-message" id="genderError">
+                  Vui lòng chọn giới tính
+                </div>
+              </div>
+              <!-- Địa chỉ -->
+              <div class="form-group full-width">
+                <label for="address">Địa chỉ *</label>
+                <input
+                  type="text"
+                  id="address"
+                  required
+                  placeholder="Nhập địa chỉ của bạn"
+                />
+                <div class="error-message" id="addressError">
+                  Vui lòng nhập địa chỉ
+                </div>
+              </div>
+              <!-- Kinh nghiệm tập luyện -->
+              <div class="form-group">
+                <label for="experience">Kinh nghiệm tập luyện</label>
+                <select id="experience">
+                  <option value="">Chọn mức độ</option>
+                  <option value="beginner">Mới bắt đầu</option>
+                  <option value="intermediate">Trung bình</option>
+                  <option value="advanced">Nâng cao</option>
+                  <option value="expert">Chuyên nghiệp</option>
+                </select>
+              </div>
+              <!-- Mục tiêu tập luyện -->
+              <div class="form-group">
+                <label for="goal">Mục tiêu tập luyện</label>
+                <select id="goal">
+                  <option value="">Chọn mục tiêu</option>
+                  <option value="weight-loss">Giảm cân</option>
+                  <option value="muscle-gain">Tăng cơ</option>
+                  <option value="fitness">Duy trì sức khỏe</option>
+                  <option value="strength">Tăng sức mạnh</option>
+                  <option value="endurance">Tăng sức bền</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Nút submit -->
+            <button type="submit" class="submit-btn" id="proceedBtn" disabled>
+              <span class="btn-text">Tiếp tục thanh toán</span>
+              <i class="bx bx-chevron-right"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script src="../dangky_kh/dangky_kh.js"></script>
+  </body>
+</html>

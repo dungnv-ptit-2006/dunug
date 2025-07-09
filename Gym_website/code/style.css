@@ -1,13 +1,13 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Kích thước bao gồm border và padding */
-  text-decoration: none; /* Không gạch chân cho liên kết */
-  list-style: none; /* Không dấu đầu dòng cho danh sách */
-  border: none; /* Không viền mặc định */
-  outline: none; /* Không viền khi focus */
-  scroll-behavior: smooth; /* Cuộn mượt */
-  font-family: -apple-system, sans-serif; /* Font chữ hệ thống */
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  border: none;
+  outline: none;
+  scroll-behavior: smooth;
+  font-family: -apple-system, sans-serif;
 }
 
 :root {
@@ -18,20 +18,18 @@
 }
 
 html {
-  font-size: 60%; /* Sử dụng đơn vị rem để responsive */
-  overflow-x: hidden; /* Ngăn chặn cuộn ngang */
+  font-size: 60%;
+  overflow-x: hidden;
 }
 
-/* Thiết lập body với theme tối */
 body {
   background-color: var(--background);
   color: var(--text-color);
 }
 
-/* Thiết lập chung cho các section */
 section {
-  min-height: 100vh; /* Mỗi section chiếm ít nhất full màn hình */
-  padding: 10rem 8% 2rem; /* Padding phía trên để tránh header cố định */
+  min-height: 100vh;
+  padding: 10rem 8% 2rem;
 }
 
 /* Header cố định */
@@ -41,13 +39,13 @@ header {
   width: 100%;
   top: 0;
   right: 0;
-  z-index: 1000; /* Đảm bảo header luôn trên cùng */
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2rem 9%;
-  background: rgba(0, 0, 0, 0.5); /* Nền trong suốt */
-  backdrop-filter: blur(10px); /* Hiệu ứng mờ */
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
 }
 
 /* Logo */
@@ -60,10 +58,9 @@ header {
 }
 
 .logo:hover {
-  transform: scale(1.1); /* Hiệu ứng phóng to khi hover */
+  transform: scale(1.1);
 }
 
-/* Màu nhấn cho các span */
 span {
   color: var(--main-color);
 }

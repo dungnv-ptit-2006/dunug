@@ -1,0 +1,544 @@
+/* Reset và biến toàn cục */
+:root {
+  /* Khai báo các biến màu sắc để sử dụng xuyên suốt */
+  --primary-color: #6bbbf0; /* Màu chính */
+  --primary-dark: #2980b9; /* Màu chính đậm */
+  --secondary-color: #2ecc71; /* Màu phụ */
+  --dark-color: #fff; /* Màu chữ tối (thực tế là màu trắng) */
+  --light-color: #f5f5f5; /* Màu nền sáng */
+  --gray-color: #aaa; /* Màu xám */
+  --light-gray: #444; /* Màu xám nhạt */
+  --danger-color: #e74c3c; /* Màu báo lỗi */
+  --success-color: #2ecc71; /* Màu thành công */
+  --warning-color: #f39c12; /* Màu cảnh báo */
+}
+
+/* Reset tất cả các phần tử */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  border: none;
+  outline: none;
+  scroll-behavior: smooth;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Thiết lập body */
+body {
+  background-color: #000;
+  color: #fff;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Background gradient */
+.gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(107, 187, 240, 0.1) 0%,
+    rgba(164, 89, 124, 0.1) 100%
+  );
+  z-index: -1;
+}
+
+/* Header */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--dark-color);
+  transition: all 0.3s ease;
+}
+
+.logo i {
+  color: var(--primary-color);
+  margin-right: 0.5rem;
+  font-size: 2.2rem;
+}
+
+.logo span {
+  color: var(--primary-color);
+}
+
+.logo:hover {
+  transform: translateY(-2px);
+}
+
+/* Nút quay lại */
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary-color);
+  color: #000;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid var(--primary-color);
+}
+
+.back-btn i {
+  font-size: 1.2rem;
+}
+
+.back-btn:hover {
+  background-color: var(--primary-dark);
+  color: white;
+  box-shadow: 0 5px 15px rgba(93, 173, 226, 0.4);
+}
+
+/* Container chính */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 8rem 5% 4rem;
+}
+
+.hero-text {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hero-text h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--dark-color);
+}
+
+.hero-text h1 span {
+  color: var(--primary-color);
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  color: var(--gray-color);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Các bước đăng ký */
+.registration-flow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  gap: 2rem;
+}
+
+/* Mỗi bước */
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Số bước */
+.step-number {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #111;
+  color: var(--gray-color);
+  border-radius: 50%;
+  font-weight: 700;
+  border: 2px solid var(--light-gray);
+}
+
+.step.active .step-number {
+  background-color: var(--primary-color);
+  color: #000;
+  border-color: var(--primary-color);
+}
+.step-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-color);
+}
+.step.active .step-text {
+  color: var(--primary-color);
+}
+
+/* Container đăng ký */
+.registration-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  background-color: #111;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  height: 1100px;
+  border: 1px solid rgba(93, 173, 226, 0.1);
+}
+
+/* Phần các gói tập */
+.plans-section {
+  padding: 2.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
+  height: 100%;
+  scrollbar-width: none;
+}
+
+/* Tiêu đề section */
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--dark-color);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.section-title i {
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--gray-color);
+  margin-bottom: 2rem;
+}
+
+/* Grid các gói tập */
+.plans-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.plan-card {
+  background-color: #111;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1px solid var(--light-gray);
+}
+
+.plan-card.highlight {
+  border: 2px solid var(--primary-color);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(93, 173, 226, 0.2);
+}
+
+.plan-badge {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background-color: var(--secondary-color);
+  color: #000;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Phần header của card */
+.plan-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+/* Tên gói tập */
+.plan-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark-color);
+  margin-bottom: 0.5rem;
+}
+
+/* Giá gói tập */
+.plan-price {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+
+/* Giá tiền */
+.plan-price .price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* Chu kỳ thanh toán */
+.plan-price .period {
+  font-size: 1rem;
+  color: var(--gray-color);
+  margin-bottom: 0.5rem;
+}
+
+/* Danh sách tính năng */
+.plan-features {
+  margin-bottom: 2rem;
+}
+
+.plan-features li {
+  padding: 0.7rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+  color: var(--dark-color);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.plan-features li i {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+/* Nút chọn gói */
+.select-plan-btn {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: #000;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid var(--primary-color);
+}
+.select-plan-btn:hover {
+  background-color: var(--primary-dark);
+  color: white;
+}
+
+/* Nút khi đã chọn */
+.select-plan-btn.selected {
+  background-color: var(--success-color);
+  color: #000;
+  border-color: var(--success-color);
+}
+
+/*------------- Phần form -----------------------*/
+.form-section {
+  padding: 2.5rem;
+}
+.form-header {
+  margin-bottom: 2rem;
+}
+
+.form-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--dark-color);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.form-header h2 i {
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+.form-header p {
+  font-size: 1rem;
+  color: var(--gray-color);
+}
+
+/* Thông tin gói đã chọn */
+.selected-plan-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(93, 173, 226, 0.1);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--primary-color);
+  margin-bottom: 2rem;
+}
+
+.selected-plan-content h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--dark-color);
+}
+
+.selected-plan-content h3 span {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* Tóm tắt giá */
+.plan-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Tổng giá */
+.plan-summary .total-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* Nút đổi gói */
+.change-plan-btn {
+  background: none;
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 0.3s ease;
+}
+
+.change-plan-btn:hover {
+  color: var(--primary-dark);
+  transform: translateX(3px);
+}
+
+.change-plan-btn i {
+  font-size: 1.1rem;
+}
+
+/*---------------- Grid form ------------------*/
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--dark-color);
+}
+
+/* ----------Input và select-------------*/
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 1rem;
+  background-color: #222;
+  color: #fff;
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(93, 173, 226, 0.2);
+}
+
+.form-group input::placeholder {
+  color: #777;
+}
+
+/* Thông báo lỗi */
+.error-message {
+  color: var(--danger-color);
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  display: none;
+}
+
+/* Nút submit */
+.submit-btn {
+  width: 100%;
+  padding: 1.2rem;
+  background-color: var(--primary-color);
+  color: #000;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-dark);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(93, 173, 226, 0.4);
+}
+
+/* Nút submit bị disable */
+.submit-btn:disabled {
+  background-color: #444;
+  color: var(--gray-color);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.submit-btn i {
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover i {
+  transform: translateX(5px);
+}
